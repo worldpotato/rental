@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Code Sample for material.AppBar.actions',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
       home: MyStatelessWidget(),
     );
@@ -31,7 +31,7 @@ class MyStatelessWidget extends StatelessWidget {
             icon: Icon(Icons.shopping_cart),
             tooltip: 'Open shopping cart',
             onPressed: () {
-              // ...
+              //
             },
           ),
         ],

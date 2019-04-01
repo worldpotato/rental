@@ -1,19 +1,26 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-
+/// A class to represent the connection to a sqlite database.
 class SqliteConnection{
 
-  Database db;
-  //open a new database connection
+  Database _db;
+
+  set db(Database value) {
+    _db = value;
+  }
+
+  SqliteConnection();
+
+  /// Tries to open the database if it does not exist, create it.
   Future open() async {
     //specify a path where the database should be stored
     var databasePath = await getDatabasesPath(); //system specific! (automatically)
     var path = join(databasePath, 'rental.db');
     //try to open the database, if it does not exist create it
-    db = await openDatabase(path, version: 1,
-        onCreate: (Database db, int version) async {
-          await db.execute(
+    _db = await openDatabase(path, version: 1,
+        onCreate: (Database _db, int version) async {
+          await _db.execute(
               '''
             create table items ( 
               itemId integer primary key, 
